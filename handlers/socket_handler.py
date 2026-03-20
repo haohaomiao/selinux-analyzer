@@ -38,7 +38,15 @@ AVC 四元组构造逻辑：
 
 from __future__ import annotations
 
-from ..models import (
+import os
+import sys
+
+# 添加父目录到路径，以便导入
+_parent_dir = os.path.dirname(os.path.abspath(__file__))
+if _parent_dir not in sys.path:
+    sys.path.insert(0, _parent_dir)
+
+from models import (
     Syscall,
     AnalysisState,
     AnalysisTrace,
@@ -47,7 +55,7 @@ from ..models import (
     Decision,
     SocketObject,
 )
-from ..knowledge.base import KnowledgeBase
+from knowledge.base import KnowledgeBase
 
 
 def handle_socket(

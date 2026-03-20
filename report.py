@@ -19,10 +19,17 @@ B. JSON - 便于后续可视化和程序消费
 from __future__ import annotations
 
 import json
+import os
+import sys
 from dataclasses import asdict
 from typing import Any
 
-from .models import AnalysisTrace, StepTrace, AVCCheck
+# 添加父目录到路径，以便导入
+_parent_dir = os.path.dirname(os.path.abspath(__file__))
+if _parent_dir not in sys.path:
+    sys.path.insert(0, _parent_dir)
+
+from models import AnalysisTrace, StepTrace, AVCCheck
 
 
 def format_trace_text(trace: AnalysisTrace) -> str:
